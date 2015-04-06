@@ -75,7 +75,7 @@ object ScalaJSPhasePortrait {
         y <- horizontalLines
       } {
           println(s"x0 = ${Point(x, y)}")
-          //rgb to plot the orbit consistently
+          //rgb to plot the orbit with 1 color
           val rgb = s"rgb(${Random.nextInt(256)},${Random.nextInt(256)},${Random.nextInt(256)})"
 
           evolution(f, Point(x, y)).map {

@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html style="height: 100%; width: 100%;">
 <head>
-  <title>Phase Portrait with ScalaJS</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Phase Portrait with ScalaJS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body style="margin: 0px; height: 100%; width: 100%;">
 
 <div>
     <div>Phase Portrait</div>
     <div style="position:relative">
-        <canvas style="display: block; width: 800px; height: 400px; background-color: #e0e0e0" id="canvas" width="800px" height="800px"/>
+        <p>Simple Pendulum</p>
+        <canvas style="display: block; width: 800px; height: 400px; background-color: #e0e0e0" id="simplePendulum" width="800px" height="800px"/>
     </div>
+
+    <div style="position:relative">
+        <p>Real Pendulum</p>
+        <canvas style="display: block; width: 800px; height: 400px; background-color: #e0e0e0" id="realPendulum" width="800px" height="800px"/>
+    </div>
+
+    <div style="position:relative">
+        <p>Lotka Volterra</p>
+        <canvas style="display: block; width: 800px; height: 400px; background-color: #e0e0e0" id="lotkaVolterra" width="800px" height="800px"/>
+    </div>
+
 </div>
 
 <script type="text/javascript" src="../phaseportraitjs-fastopt.js"></script>
 <script type="text/javascript" src="/workbench.js"></script>
 <script>
-    drawing.ScalaJSPhasePortrait().main(document.getElementById('canvas'));
+    drawing.ScalaJSPhasePortrait().simplePendulumPhasePortrait(document.getElementById('simplePendulum'));
+    drawing.ScalaJSPhasePortrait().realPendulumPhasePortrait(document.getElementById('realPendulum'));
+    drawing.ScalaJSPhasePortrait().lotkaVolterraPhasePortrait(document.getElementById('lotkaVolterra'));
 </script>
 </body>
 </html>

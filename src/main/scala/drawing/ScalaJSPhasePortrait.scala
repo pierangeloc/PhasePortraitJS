@@ -13,7 +13,6 @@ import scala.util.Random
 case class Point (x: Double, y: Double) {
   def +(other: Point) = Point(this.x + other.x, this.y + other.y)
   def -(other: Point) = Point(this.x - other.x, this.y - other.y)
-  def /(factor: Double) = Point(this.x / factor, this.y / factor)
   def *(factor: Double) = Point(this.x * factor, this.y * factor)
   def abs = Math.sqrt(x * x + y * y)
 }
@@ -24,18 +23,20 @@ object ScalaJSPhasePortrait {
   def simplePendulum = (x: Point) => Point(x.y, - omega * omega * x.x)
   def realPendulum = (x: Point) => Point(x.y, - omega * omega * Math.sin(x.x))
   def lotkaVolterra = (x: Point) => Point(x.x - x.x * x.y, x.x * x.y - x.y)
+  def vanDerPol = (x: Point) => Point(x.y, 2 * (1 - x.x * x.x) * x.y - x.x)
 
 
-  
+
+
   @JSExport
   def realPendulumPhasePortrait(canvas: Canvas): Unit = phasePortrait(DrawingWindow(canvas, 0, 0, 10, 5), realPendulum)
 
   @JSExport
-  def simplePendulumPhasePortrait(canvas: Canvas): Unit = phasePortrait(DrawingWindow(canvas, 0, 0, 10, 5), simplePendulum)
+  def simplePendulumPhasePortrait(canvas: Canvas): Unit = phasePortrait(DrawingWindow(canvas, 0, 0, 10, 5), vanDerPol)
 
   @JSExport
   def lotkaVolterraPhasePortrait(canvas: Canvas): Unit = phasePortrait(DrawingWindow(canvas, 4, 2, 4, 2), lotkaVolterra)
-  
+
   
   def phasePortrait(drawingWindow: DrawingWindow, system: (Point) => Point = lotkaVolterra): Unit = {
 
